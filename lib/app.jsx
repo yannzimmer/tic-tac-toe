@@ -27,4 +27,16 @@ var Box = React.createClass({
   }
 });
 
-React.render(<Box/>, document.body);
+var Row = React.createClass({
+  render: function(){
+    return (
+      <div>
+        <Box/>
+        <Box/>
+        <Box/>
+      </div>
+    );
+  }
+});
+
+React.render(<Row/>, document.body);
