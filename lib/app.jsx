@@ -5,35 +5,30 @@ var React = require('react');
 var Style = {height : "100px", width : "100px"};
 
 var Box = React.createClass({
-  getInitialState: function(){
-    return {
-      value: 'X'
-    }
-  },
-
-  handleClick: function(){
-    var oldValue = this.state.value;
-    var newValue = oldValue === 'X' ? 'O': 'X';
-    this.setState({
-      value: newValue
-    });
-  },
-
   'render': function onRender () {
     return (
-      <button style={Style} onClick={this.handleClick}>
-      {this.state.value}</button>
+      <button style={Style}>
+      {this.props.value}</button>
     );
   }
 });
 
 var Row = React.createClass({
+  getInitialState: function(){
+    return {
+      clicks: 0,
+      rowValues: ['-', '-', '-']
+    };
+  },
   render: function(){
+    var boxes = this.state.rowValues.map(function(value, index){
+      return (
+        <Box value={value} key={index} rowIndex={index} />
+      );
+    });
     return (
       <div>
-        <Box/>
-        <Box/>
-        <Box/>
+        {boxes}
       </div>
     );
   }
