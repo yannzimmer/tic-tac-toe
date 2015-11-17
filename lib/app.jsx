@@ -49,5 +49,17 @@ var Row = React.createClass({
   }
 });
 
+var Board = React.createClass({
+  render: function(){
+    return (
+      <div>
+        <Row/>
+        <Row/>
+        <Row/>
+      </div>
+    );
+  }
+})
 
-React.render(<Row/>, document.body);
+
+React.render(<Board/>, document.body);
